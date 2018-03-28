@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.acl.dao.SysAclMapper">
+    <resultMap id="BaseResultMap" type="com.acl.entity.SysAcl">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="acl_module_id" property="aclModuleId" jdbcType="INTEGER"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="seq" property="seq" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="operator" property="operator" jdbcType="VARCHAR"/>
+        <result column="operator_time" property="operatorTime" jdbcType="TIMESTAMP"/>
+        <result column="operator_ip" property="operatorIp" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, acl_module_id, code, name, url, type, status, seq, remark, operator, operator_time, 
+    operator_ip
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_acl
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_acl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.acl.entity.SysAcl">
+    insert into sys_acl (id, acl_module_id, code, 
+      name, url, type, status, 
+      seq, remark, operator, 
+      operator_time, operator_ip)
+    values (#{id,jdbcType=INTEGER}, #{aclModuleId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{seq,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{operatorTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.acl.entity.SysAcl">
+        insert into sys_acl
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="aclModuleId != null">
+                acl_module_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="seq != null">
+                seq,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="operatorTime != null">
+                operator_time,
+            </if>
+            <if test="operatorIp != null">
+                operator_ip,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="aclModuleId != null">
+                #{aclModuleId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="seq != null">
+                #{seq,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorTime != null">
+                #{operatorTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorIp != null">
+                #{operatorIp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.acl.entity.SysAcl">
+        update sys_acl
+        <set>
+            <if test="aclModuleId != null">
+                acl_module_id = #{aclModuleId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="seq != null">
+                seq = #{seq,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="operator != null">
+                operator = #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorTime != null">
+                operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorIp != null">
+                operator_ip = #{operatorIp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.acl.entity.SysAcl">
+    update sys_acl
+    set acl_module_id = #{aclModuleId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      seq = #{seq,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      operator_ip = #{operatorIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectCountByAclModuleId" parameterType="Integer" resultType="java.lang.Integer">
+    SELECT  count(id) from sys_acl where acl_module_id=#{aclModuleId}
+  </select>
+
+    <select id="countByNameParentIdDepartId" parameterType="map" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM sys_acl
+        WHERE name = #{name}
+        <if test="aclModuleId != null">
+            AND acl_module_id = #{aclModuleId}
+        </if>
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <select id="AclPage" parameterType="map" resultType="com.acl.entity.SysAcl">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from sys_acl where acl_module_id = #{aclModuleId}
+        order by operator_time
+        limit #{param.offSet},#{param.pageSize}
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT  <include refid="Base_Column_List"/> from sys_acl
+    </select>
+
+    <select id="getAclByAclIdList" parameterType="ArrayList" resultMap="BaseResultMap">
+        SELECT  <include refid="Base_Column_List"/> from sys_acl where id =
+        <foreach collection="list" item="item" separator="or id=" >
+            #{item}
+        </foreach>
+    </select>
+
+
+</mapper>
